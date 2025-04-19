@@ -16,7 +16,7 @@ A command-line interface (CLI) tool for rapid preliminary analysis of powder X-r
 ### From Source
 
 ```bash
-git clone https://github.com/yourusername/crysanalyze.git
+git clone https://github.com/raymsm/crysanalyze.git
 cd crysanalyze
 pip install -r requirements.txt
 ```
